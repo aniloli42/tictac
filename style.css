@@ -27,11 +27,76 @@ body {
 
 /* table */
 .container table tr td {
+  border: 1px solid #000;
+  position: relative;
   width: 100px;
   height: 100px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  cursor: pointer;
+}
+
+.container table tr td:first-child,
+.container table tr td:nth-child(2),
+.container table tr td:nth-child(3) {
+  border-top: none;
+}
+.container table tr td:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.container table tr td:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.container table tr td:nth-child(6),
+.container table tr td:nth-child(7),
+.container table tr td:nth-child(8) {
+  border-bottom: none;
+}
+
+/* circle */
+.redMark::before,
+.redMark::after,
+.yellowMark::before,
+.yellowMark::after {
+  content: "";
+  transform: translate(-50%, -50%);
+  bottom: 0;
+  top: 50%;
+  left: 50%;
+  border-radius: 100%;
+}
+
+.redMark::before {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: red;
+}
+
+td[class*="redMark"]:hover,
+td[class*="yellowMark"]:hover {
+  cursor: not-allowed;
+}
+
+.redMark::after {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
+}
+
+.yellowMark::before {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: yellow;
+}
+
+.yellowMark::after {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #fff;
 }
 
 /* Player Turn */
@@ -39,14 +104,6 @@ body {
   margin-top: 10px;
   font-weight: bold;
   font-size: 20px;
-}
-
-/* circle */
-.circleDesign {
-  width: 40px;
-  height: 40px;
-  border: 5px solid;
-  border-radius: 25px;
 }
 
 .winMessage {
@@ -60,6 +117,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .winMessage p {
