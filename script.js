@@ -31,7 +31,7 @@ function mark(id) {
     } else {
       clickedBox.innerHTML = `<div class="circleDesign"  style="border-color:yellow;background-color:yellow; "></div>`;
     }
-    playTurn(id);
+    playTurn(Number(id));
   }
 }
 
@@ -53,32 +53,36 @@ function playTurn(id) {
     secondPlayerSelect.push(id);
     turnText.innerText = `Player Turn: First Player`;
   }
-  if (noBoxMarked > 2) {
-    winStatus();
-  }
+  winStatus();
 }
 
 // Win Status
+let winCondition = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+let firstWinChance;
+let secondWinChance;
 function winStatus() {
-  let arr1 = firstPlayerSelect;
-  let arr2 = secondPlayerSelect;
-  let arr = {
-    0: [0, 1, 2],
-    1: [3, 4, 5],
-    2: [6, 7, 8],
-    3: [0, 3, 6],
-    4: [1, 4, 7],
-    5: [2, 5, 8],
-    6: [0, 4, 8],
-    7: [2, 4, 6],
-  };
-  for (let i = 0; i < Object.keys(arr).length; i++) {
-    let val1 = arr1.filter((item) => arr[i].includes(item));
-    let val2 = arr2.filter((item) => arr[i].includes(item));
-    if (val1.length == 3 || val2.length == 3) {
-      console.log("suc");
-    } else {
-      console.log("f");
+  winCondition.forEach((winItem) => {
+    firstWinChance = winItem.every((number) =>
+      firstPlayerSelect.includes(number)
+    );
+    secondWinChance = winItem.every((number) =>
+      secondPlayerSelect.includes(number)
+    );
+    if (firstWinChance === true) {
+      console.log("first Win");
+    } else if (secondWinChance === true) {
+      console.log("second Win");
+    } else if (noBoxMarked == 9 && !firstWinChance && !secondWinChance) {
+      console.log("draw");
     }
-  }
+  });
 }

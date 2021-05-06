@@ -1,46 +1,86 @@
 /* Universal Code */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
 }
 
 /* Variables */
 :root {
-    --primaryColor: #000;
-    --secondaryColor: #fff;
-    --defaultShadow: 2px 2px 5px #000;
+  --primaryColor: #000;
+  --secondaryColor: #fff;
+  --defaultShadow: 2px 2px 5px #000;
 }
 
 /* container */
 .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 /* table */
-.container table tr  td {
-    width: 100px;
-    height: 100px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
+.container table tr td {
+  width: 100px;
+  height: 100px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Player Turn */
-.container .playerTurn{
-    margin-top: 10px;
-    font-weight: bold;
-    font-size: 20px;
+.container .playerTurn {
+  margin-top: 10px;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /* circle */
 .circleDesign {
-    width: 40px;
-    height: 40px;
-    border: 5px solid;
-    border-radius: 25px;
+  width: 40px;
+  height: 40px;
+  border: 5px solid;
+  border-radius: 25px;
+}
+
+.winMessage {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.75);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winMessage p {
+  font-size: 40px;
+  color: white;
+}
+
+.winMessage .restartGame {
+  outline: none;
+  width: 30%;
+  height: 5%;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.winMessage .restartGame:hover {
+  color: #fff;
+  border: 2px solid #fff;
+  background-color: #000;
+}
+
+.showMessage {
+  display: none;
 }
