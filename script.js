@@ -75,12 +75,10 @@ function winStatus() {
   for (let i = 0; i < Object.keys(arr).length; i++) {
     let val1 = arr1.filter((item) => arr[i].includes(item));
     let val2 = arr2.filter((item) => arr[i].includes(item));
-    console.log(val1, val2);
     if (val1.length == 3 || val2.length == 3) {
       console.log("suc");
-      break;
     } else {
-      //   console.log("f");
+      console.log("f");
     }
   }
 }
