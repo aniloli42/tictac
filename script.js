@@ -1,6 +1,7 @@
 //  Click Box finder
 let noBoxMarked = 0;
 let columns = document.getElementsByTagName("td");
+
 Array.from(columns).forEach(function (element) {
   if (noBoxMarked < 9) {
     element.addEventListener(
@@ -69,6 +70,7 @@ let winCondition = [
 ];
 let firstWinChance;
 let secondWinChance;
+const winMessage = document.querySelector("[data-message]");
 function winStatus() {
   winCondition.forEach((winItem) => {
     firstWinChance = winItem.every((number) =>
@@ -78,11 +80,29 @@ function winStatus() {
       secondPlayerSelect.includes(number)
     );
     if (firstWinChance === true) {
-      console.log("first Win");
+      winMessage.children[0].innerText = `First Wins!`;
+      winMessage.style.display = "flex";
     } else if (secondWinChance === true) {
-      console.log("second Win");
+      winMessage.children[0].innerText = `Second Wins!`;
+      winMessage.style.display = "flex";
     } else if (noBoxMarked == 9 && !firstWinChance && !secondWinChance) {
-      console.log("draw");
+      winMessage.children[0].innerText = `Draw!`;
+      winMessage.style.display = "flex";
     }
   });
 }
+
+// Restart Game
+document.querySelector("[data-game-restart]").addEventListener("click", () => {
+  winMessage.style.display = "none";
+  firstPlayerSelect = [];
+  secondPlayerSelect = [];
+  firstWinChance = "";
+  secondWinChance = "";
+  noBoxMarked = 0;
+  turn = 0;
+  turnText.innerText = `Player Turn: First Player`;
+  [...columns].forEach((element) => {
+    element.innerHTML = "";
+  });
+});
