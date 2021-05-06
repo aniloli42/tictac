@@ -4,21 +4,17 @@ let columns = document.getElementsByTagName("td");
 
 Array.from(columns).forEach(function (element) {
   if (noBoxMarked < 9) {
-    element.addEventListener(
-      "click",
-      function (e) {
-        // Only Box mark when box is blank and have id
-        if (e.target.children.length == 0 && e.target.id != "") {
-          // Check the no of Box checked
-          if (noBoxMarked < 9) {
-            noBoxMarked += 1;
-            // Calling the Box mark
-            mark(e.target.id);
-          }
+    element.addEventListener("click", function (e) {
+      // Only Box mark when box is blank and have id
+      if (e.target.children.length == 0 && e.target.id != "") {
+        // Check the no of Box checked
+        if (noBoxMarked < 9) {
+          noBoxMarked += 1;
+          // Calling the Box mark
+          mark(e.target.id);
         }
-      },
-      { once: true }
-    );
+      }
+    });
   }
 });
 
