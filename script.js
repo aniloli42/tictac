@@ -7,6 +7,10 @@ let turnText = document.querySelector(".playerTurn");
 Array.from(columns).forEach((element) => {
   element.addEventListener("mouseup", (e) => {});
   element.addEventListener("click", (e) => {
+    if (
+      e.target.classList.contains("redMark") == false &&
+      e.target.classList.contains("yellowMark") == false
+    ) {
     let cell = e.target;
     mark(cell, selectCurrentClass);
     if (winStatus(selectCurrentClass)) {
@@ -16,17 +20,13 @@ Array.from(columns).forEach((element) => {
     } else {
       playTurn();
     }
+    }
   });
 });
 
 //  Mark Code
 function mark(cell, selectCurrentClass) {
-  if (
-    !cell.classList.contains("redMark") &&
-    !cell.classList.contains("yellowMark")
-  ) {
     cell.classList.add(selectCurrentClass);
-  }
 }
 
 // Player Turn
