@@ -29,6 +29,9 @@ body {
 .container table tr td {
   border: 1px solid #000;
   position: relative;
+  display: inline-grid;
+  align-items: center;
+  justify-items: center;
   width: 100px;
   height: 100px;
   cursor: pointer;
@@ -47,17 +50,13 @@ body {
   border-right: none;
 }
 
-.container table tr td:nth-child(6),
-.container table tr td:nth-child(7),
-.container table tr td:nth-child(8) {
+.container table tr .lineRemove {
   border-bottom: none;
 }
 
 /* circle */
 .redMark::before,
-.redMark::after,
-.yellowMark::before,
-.yellowMark::after {
+.redMark::after {
   content: "";
   transform: translate(-50%, -50%);
   bottom: 0;
@@ -85,18 +84,23 @@ td[class*="yellowMark"]:hover {
   background-color: #fff;
 }
 
-.yellowMark::before {
+.yellowMark::before,
+.yellowMark::after {
   position: absolute;
+  content: "";
   width: 80px;
-  height: 80px;
+  height: 20px;
+}
+
+.yellowMark::before {
+  transform: rotate(45deg);
   background-color: yellow;
 }
 
 .yellowMark::after {
-  position: absolute;
-  width: 50px;
-  height: 50px;
-  background-color: #fff;
+  transform: rotate(-45deg);
+
+  background-color: yellow;
 }
 
 /* Player Turn */

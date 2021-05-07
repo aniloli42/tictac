@@ -11,22 +11,22 @@ Array.from(columns).forEach((element) => {
       e.target.classList.contains("redMark") == false &&
       e.target.classList.contains("yellowMark") == false
     ) {
-    let cell = e.target;
-    mark(cell, selectCurrentClass);
-    if (winStatus(selectCurrentClass)) {
-      showWinMessage(false);
-    } else if (checkDraw()) {
-      showWinMessage(true);
-    } else {
-      playTurn();
-    }
+      let cell = e.target;
+      mark(cell, selectCurrentClass);
+      if (winStatus(selectCurrentClass)) {
+        showWinMessage(false);
+      } else if (checkDraw()) {
+        showWinMessage(true);
+      } else {
+        playTurn();
+      }
     }
   });
 });
 
 //  Mark Code
 function mark(cell, selectCurrentClass) {
-    cell.classList.add(selectCurrentClass);
+  cell.classList.add(selectCurrentClass);
 }
 
 // Player Turn
@@ -88,6 +88,7 @@ document.querySelector("[data-game-restart]").addEventListener("click", () => {
   selectCurrentClass = "redMark";
   turnText.innerText = `Player Turn: First Player`;
   [...columns].forEach((element) => {
-    element.className = "";
+    element.classList.remove("redMark") ||
+      element.classList.remove("yellowMark");
   });
 });
