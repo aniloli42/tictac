@@ -5,7 +5,6 @@ let turnText = document.querySelector(".playerTurn");
 
 // Click Box Finder
 Array.from(columns).forEach((element) => {
-  element.addEventListener("mouseup", (e) => {});
   element.addEventListener("click", (e) => {
     if (
       e.target.classList.contains("redMark") == false &&
